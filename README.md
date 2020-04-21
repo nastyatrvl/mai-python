@@ -24,4 +24,4 @@ $ coverage run -m unittest what_is_year_now.py
 $ coverage report -m
 $ coverage html
 ```
-and open htmlcov/index.html to get this ![coverage report](file:///Users/avsorokina/PycharmProjects/mai-python/03-instrumenty-testirovaniya-v-python/htmlcov/index.html)
+and open htmlcov/index.html to get the image
