@@ -1,24 +1,27 @@
-Практические задания по курсу "Программирование на Python"
-
----
-MIT License
-
-Copyright (c) 2019 Roman Afanaskin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+## issue-01
+To execute doctests run:
+```
+$ python -m doctest -v -o NORMALIZE_WHITESPACE morse.py
+```
+## issue-02
+To execute pytest tests run:
+```
+$ python -m pytest morse.py
+```
+## issue-03
+To execute unittest tests run:
+```
+$ python one_hot_encoder.py
+```
+## issue-04
+To execute pytest tests run:
+```
+$ python -m pytest one_hot_encoder.py
+```
+## issue-05
+```
+$ coverage run -m unittest what_is_year_now.py
+$ coverage report -m
+$ coverage html
+```
+and open htmlcov/index.html to get this ![coverage report](file:///Users/avsorokina/PycharmProjects/mai-python/03-instrumenty-testirovaniya-v-python/htmlcov/index.html)
