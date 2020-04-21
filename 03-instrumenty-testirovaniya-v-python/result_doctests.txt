@@ -1,0 +1,50 @@
+$ python -m doctest -v -o NORMALIZE_WHITESPACE morse.py
+Trying:
+    decode('.- ...- .. - ---')
+Expecting:
+    'AVITO'
+ok
+Trying:
+    decode('.--. -.-- - .... --- -.')
+Expecting:
+    'PYTHON'
+ok
+Trying:
+    decode('... --- ...')
+Expecting:
+    'SOS'
+ok
+Trying:
+    encode('AVITO')
+Expecting:
+    '.- ...- .. - ---'
+ok
+Trying:
+    encode('PYTHON')
+Expecting:
+    '.--. -.-- - .... --- -.'
+ok
+Trying:
+    encode('SOS')
+Expecting:
+    '... --- ...'
+ok
+Trying:
+    encode('WHAT ?') # doctest: +ELLIPSIS
+Expecting:
+    '.....--..'
+ok
+Trying:
+    encode(42)
+Expecting:
+    Traceback (most recent call last):
+    TypeError: 'int' object is not iterable
+ok
+1 items had no tests:
+    morse
+2 items passed all tests:
+   3 tests in morse.decode
+   5 tests in morse.encode
+8 tests in 3 items.
+8 passed and 0 failed.
+Test passed.

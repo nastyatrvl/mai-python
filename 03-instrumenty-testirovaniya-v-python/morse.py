@@ -1,3 +1,4 @@
+import pytest
 """Morse Code Translator"""
 
 LETTER_TO_MORSE = {
@@ -25,8 +26,21 @@ MORSE_TO_LETTER = {
 
 
 def encode(message: str) -> str:
+    # -> is used to indicate the type that the function returns
+    # traceback header is followed by traceback stack (which is usually omitted)
     """
     Кодирует строку в соответсвие с таблицей азбуки Морзе
+    >>> encode('AVITO')
+    '.- ...- .. - ---'
+    >>> encode('PYTHON')
+    '.--. -.-- - .... --- -.'
+    >>> encode('SOS')
+    '... --- ...'
+    >>> encode('WHAT ?') # doctest: +ELLIPSIS
+    '.....--..'
+    >>> encode(42)
+    Traceback (most recent call last):
+    TypeError: 'int' object is not iterable
     """
     encoded_signs = [
         LETTER_TO_MORSE[letter] for letter in message
@@ -38,12 +52,28 @@ def encode(message: str) -> str:
 def decode(morse_message: str) -> str:
     """
     Декодирует строку из азбуки Морзе в английский
+    >>> decode('.- ...- .. - ---')
+    'AVITO'
+    >>> decode('.--. -.-- - .... --- -.')
+    'PYTHON'
+    >>> decode('... --- ...')
+    'SOS'
     """
     decoded_letters = [
         MORSE_TO_LETTER[letter] for letter in morse_message.split()
     ]
 
     return ''.join(decoded_letters)
+
+
+@pytest.mark.parametrize(
+    'morse_message, eng_message',
+    [('.- ...- .. - ---', 'AVITO'),
+     ('.--. -.-- - .... --- -.', 'PYTHON'),
+     ('... --- ...', 'SOS')]
+)
+def test_decode(morse_message, eng_message):
+    assert decode(morse_message) == eng_message
 
 
 if __name__ == '__main__':

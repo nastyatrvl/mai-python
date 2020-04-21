@@ -1,0 +1,20 @@
+$ python -m pytest one_hot_encoder.py
+================================================================================== test session starts ==================================================================================
+platform darwin -- Python 3.7.3, pytest-5.4.1, py-1.8.0, pluggy-0.12.0
+rootdir: /Users/avsorokina/PycharmProjects/mai-python/03-instrumenty-testirovaniya-v-python
+plugins: openfiles-0.3.2, arraydiff-0.3, doctestplus-0.3.0, remotedata-0.3.1
+collected 8 items
+
+one_hot_encoder.py ......F.                                                                                                                                                       [100%]
+
+======================================================================================= FAILURES ========================================================================================
+________________________________________________________________________________________ test_in ________________________________________________________________________________________
+
+    def test_in():
+>       assert ('Moscow', [0, 0, 1]) <= fit_transform(['Moscow', 'New York', 'Moscow', 'London'])
+E       TypeError: '<=' not supported between instances of 'tuple' and 'list'
+
+one_hot_encoder.py:49: TypeError
+================================================================================ short test summary info ================================================================================
+FAILED one_hot_encoder.py::test_in - TypeError: '<=' not supported between instances of 'tuple' and 'list'
+============================================================================== 1 failed, 7 passed in 0.10s ==============================================================================

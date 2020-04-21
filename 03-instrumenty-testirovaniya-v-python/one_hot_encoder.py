@@ -1,4 +1,57 @@
+import unittest
+import pytest
 from typing import List, Tuple
+
+
+class TestTF(unittest.TestCase):
+    def test_oh(self):
+        actual = fit_transform(['Moscow', 'New York', 'Moscow', 'London'])
+        expected = [
+        ('Moscow', [0, 0, 1]),
+        ('New York', [0, 1, 0]),
+        ('Moscow', [0, 0, 1]),
+        ('London', [1, 0, 0]),
+        ]
+        self.assertEqual(actual, expected)
+
+    def test_empty(self):
+        actual = fit_transform([])
+        expected = []
+        self.assertEqual(actual, expected)
+
+    def test_in(self):
+        self.assertIn(('Moscow', [0, 0, 1]),
+                      fit_transform(['Moscow', 'New York', 'Moscow', 'London']))
+
+    def test_ex(self):
+        with self.assertRaises(TypeError):
+            fit_transform()
+
+
+def test_oh():
+    actual = fit_transform(['Moscow', 'New York', 'Moscow', 'London'])
+    expected = [
+        ('Moscow', [0, 0, 1]),
+        ('New York', [0, 1, 0]),
+        ('Moscow', [0, 0, 1]),
+        ('London', [1, 0, 0]),
+    ]
+    assert actual == expected
+
+
+def test_empty():
+    actual = fit_transform([])
+    expected = []
+    assert actual == expected
+
+
+def test_in():
+    assert ('Moscow', [0, 0, 1]) <= fit_transform(['Moscow', 'New York', 'Moscow', 'London'])
+
+
+def test_ex():
+    with pytest.raises(TypeError):
+        fit_transform()
 
 
 def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
@@ -17,7 +70,7 @@ def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
     transformed_rows = []
 
     for cat in categories:
-        bin_view_cat = (int(b) for b in bin_format.format(1 << len(seen_categories)))
+        bin_view_cat = (int(b) for b in bin_format.format(1 << len(seen_categories))) # bitwise shift operator% returns 1 with the bits shifted to the left
         seen_categories.setdefault(cat, list(bin_view_cat))
         transformed_rows.append((cat, seen_categories[cat]))
 
@@ -25,15 +78,4 @@ def fit_transform(*args: str) -> List[Tuple[str, List[int]]]:
 
 
 if __name__ == '__main__':
-    from pprint import pprint
-
-    cities = ['Moscow', 'New York', 'Moscow', 'London']
-    exp_transformed_cities = [
-        ('Moscow', [0, 0, 1]),
-        ('New York', [0, 1, 0]),
-        ('Moscow', [0, 0, 1]),
-        ('London', [1, 0, 0]),
-    ]
-    transformed_cities = fit_transform(cities)
-    pprint(transformed_cities)
-    assert transformed_cities == exp_transformed_cities
+    unittest.main()

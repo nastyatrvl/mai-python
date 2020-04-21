@@ -1,0 +1,15 @@
+$ coverage run -m unittest what_is_year_now.py
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+
+$ coverage report -m
+Name                  Stmts   Miss  Cover   Missing
+---------------------------------------------------
+what_is_year_now.py      33      5    85%   47, 53-57
+
+
+$ coverage html

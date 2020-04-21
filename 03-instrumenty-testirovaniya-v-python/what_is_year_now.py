@@ -1,6 +1,7 @@
 import urllib.request
 import json
-
+import unittest
+from unittest.mock import patch, mock_open
 
 API_URL = 'http://worldclockapi.com/api/json/utc/now'
 
@@ -11,6 +12,19 @@ YMD_YEAR_SLICE = slice(None, YMD_SEP_INDEX)
 DMY_SEP = '.'
 DMY_SEP_INDEX = 5
 DMY_YEAR_SLICE = slice(DMY_SEP_INDEX + 1, DMY_SEP_INDEX + 5)
+
+
+class TestTf(unittest.TestCase):
+    # Mock 'requests' module 'urlopen' method
+    @patch('urllib.request.urlopen', mock_open(read_data='{"currentDateTime": "2020-04-21"}'))
+    def test_date1(self):
+        actual = what_is_year_now()
+        self.assertEqual(actual, 2020)
+
+    @patch('urllib.request.urlopen', mock_open(read_data='{"currentDateTime": "21.04.2020"}'))
+    def test_date2(self):
+        actual = what_is_year_now()
+        self.assertEqual(actual, 2020)
 
 
 def what_is_year_now() -> int:
